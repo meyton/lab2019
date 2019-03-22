@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App18"
+             x:Class="App18.MainPage">
+
+    <StackLayout x:Name="stack">
+        <!-- Place new controls here -->
+        <Label x:Name="lblOne" Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="entryLogin" Placeholder="Login" TextChanged="EntryLogin_TextChanged"/>
+        <Entry x:Name="entryPassword" IsPassword="True" Placeholder="Hasło" />
+        <Label x:Name="lblValidation"  Text="Podano błędne dane" FontSize="Micro" TextColor="Red" IsVisible="False" />
+        <Button x:Name="btnLogin" Text="Login" Clicked="Button_Clicked" />
+
+        <Entry x:Name="entryUrl" Placeholder="Wpisz wwww" Completed="EntryUrl_Completed" />
+
+    </StackLayout>
+
+</ContentPage>
