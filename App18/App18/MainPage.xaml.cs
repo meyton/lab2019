@@ -56,7 +56,7 @@ namespace App18
 
             if (!areFieldsEmpty && areFieldsCorrect)
             {
-                //await Navigation.PushAsync(new SecondPage());
+                await Navigation.PushAsync(new SecondPage("https://google.pl"));
             }
             else
             {
@@ -64,16 +64,6 @@ namespace App18
                 entryLogin.BackgroundColor = Color.Red;
                 entryPassword.BackgroundColor = Color.Red;
             }
-            
-            //if (sender is Button)
-            //{
-            //    var btn = (Button)sender;
-            //    var btn2 = sender as Button;
-
-            //    var color = (Color)Application.Current.Resources["PrimaryColor"];
-
-            //    btn.BackgroundColor = color;
-            //}
         }
 
         protected override void OnDisappearing()
@@ -85,7 +75,6 @@ namespace App18
             entryPassword.BackgroundColor = Color.White;
             entryLogin.Text = string.Empty;
             entryPassword.Text = string.Empty;
-
         }
 
         private void EntryLogin_TextChanged(object sender, TextChangedEventArgs e)
@@ -96,9 +85,20 @@ namespace App18
         private async void EntryUrl_Completed(object sender, EventArgs e)
         {
             var url = entryUrl?.Text;
-            if (url.Length > 3)
+            if (url.Length > 5)
             {
-                await Navigation.PushAsync(new SecondPage(url));
+                if (await DisplayAlert("Czy na pewno?", $"Czy na pewno chcesz wejść na stronę {url}?", "TAK", "NIE"))
+                {
+                    await Navigation.PushAsync(new HttpPage(url));
+                }
+                else
+                {
+                    await DisplayAlert("OK", "Wróć jak dorośniesz", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Błąd", "Podany URL jest nieprawidłowy", "OK");
             }
         }
     }
