@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App18.GridPage">
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Label Text="Header" Grid.ColumnSpan="3" />
+            <StackLayout Spacing="0" Grid.Row="1" Grid.ColumnSpan="3" >
+                <Label Text="Główny content"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <Button CornerRadius="0" BorderWidth="0" Text="Secondary" Grid.Row="2" Grid.Column="0" BackgroundColor="Gray" />
+            <Button CornerRadius="0" BorderWidth="0" Text="Primary" Grid.Row="2" Grid.Column="1" BackgroundColor="Blue" />
+            <Button CornerRadius="0" BorderWidth="0" Text="Secondary" Grid.Row="2" Grid.Column="2" BackgroundColor="Gray" />
+        </Grid>
+  </ContentPage.Content>
+</ContentPage>

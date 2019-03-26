@@ -6,7 +6,7 @@
 
     <StackLayout x:Name="stack">
         <!-- Place new controls here -->
-        <Label x:Name="lblOne" Text="Welcome to Xamarin.Forms!" 
+        <Label x:Name="lblOne" Text="Nie odwiedzono jeszcze żadnej strony" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         <Entry x:Name="entryLogin" Placeholder="Login" TextChanged="EntryLogin_TextChanged"/>
@@ -15,6 +15,7 @@
         <Button x:Name="btnLogin" Text="Login" Clicked="Button_Clicked" />
 
         <Entry x:Name="entryUrl" Placeholder="Wpisz wwww" Completed="EntryUrl_Completed" />
+        <Button Text="Wyczyść cache" Clicked="Button_Clicked_1" />
 
     </StackLayout>
 

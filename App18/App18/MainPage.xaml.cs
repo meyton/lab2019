@@ -15,7 +15,6 @@ namespace App18
         public MainPage()
         {
             InitializeComponent();
-            lblOne.Text = "123";
             lblOne.FontSize = 28.0;
 
             stack.Children.Add(new Label() { Text = "456", FontSize = 30.0, HorizontalOptions = LayoutOptions.End });
@@ -89,6 +88,8 @@ namespace App18
             {
                 if (await DisplayAlert("Czy na pewno?", $"Czy na pewno chcesz wejść na stronę {url}?", "TAK", "NIE"))
                 {
+                    Data.Properties.AppProperties["url"] = url;
+                    await Application.Current.SavePropertiesAsync();
                     await Navigation.PushAsync(new HttpPage(url));
                 }
                 else
@@ -99,6 +100,24 @@ namespace App18
             else
             {
                 await DisplayAlert("Błąd", "Podany URL jest nieprawidłowy", "OK");
+            }
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            Data.Properties.AppProperties.Remove("url");
+            await Application.Current.SavePropertiesAsync();
+            Application.Current.MainPage = new NavigationPage(new MainPage());
+            //Navigation.RemovePage(Navigation.NavigationStack[0]);
+            //await Navigation.PushAsync(new GridPage());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Data.Properties.AppProperties.ContainsKey("url"))
+            {
+                lblOne.Text = $"Ostatnio odwiedzana strona: {Data.Properties.AppProperties["url"]}";
             }
         }
     }
