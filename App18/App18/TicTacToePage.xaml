@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App18.TicTacToePage"
+             Title="Kółko i krzyżyk">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="42" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Kółko: " />
+                <Label Text="XXX" Margin="0, 0, 10, 0" />
+                <Label Text="Remis: " />
+                <Label Text="XXX" Margin="0, 0, 10, 0" />
+                <Label Text="Krzyżyk: " />
+                <Label Text="XXX" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Ruch: " />
+                <Label x:Name="lblMove" Text="Kółko/Krzyżyk" />
+            </StackLayout>
+            <Button Grid.Row="2" Grid.Column="0" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="2" Grid.Column="1" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="2" Grid.Column="2" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="3" Grid.Column="0" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="3" Grid.Column="1" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="4" Grid.Column="0" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="4" Grid.Column="1" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="4" Grid.Column="2" Text="Pusto" Clicked="Button_Clicked" />
+            <Button Grid.Row="5" Grid.ColumnSpan="3" Text="Restart" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
