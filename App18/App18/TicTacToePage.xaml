@@ -20,11 +20,11 @@
             </Grid.RowDefinitions>
             <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Kółko: " />
-                <Label Text="XXX" Margin="0, 0, 10, 0" />
+                <Label x:Name="lblCircle" Text="0" Margin="0, 0, 10, 0" />
                 <Label Text="Remis: " />
-                <Label Text="XXX" Margin="0, 0, 10, 0" />
+                <Label x:Name="lblDraw" Text="0" Margin="0, 0, 10, 0" />
                 <Label Text="Krzyżyk: " />
-                <Label Text="XXX" />
+                <Label x:Name="lblCross" Text="0" />
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="Ruch: " />
