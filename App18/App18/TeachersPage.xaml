@@ -5,21 +5,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-      <ListView Grid.Row="0" x:Name="MyListView" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListView Grid.ColumnSpan="2" x:Name="MyListView" 
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding FirstName}" Detail="{Binding LastName}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
+
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding FirstName}" Detail="{Binding LastName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--Custom View Cells-->
+            <!--
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -34,6 +39,8 @@
     </ListView.ItemTemplate>
     -->
         </ListView>
-        <Button Grid.Row="1" Text="Generate New Teacher" Clicked="Button_Clicked" />
+        <Entry Grid.Row="1" x:Name="entryFirstName" Placeholder="First Name" />
+        <Entry Grid.Row="1" Grid.Column="1" x:Name="entryLastName" Placeholder="Last Name" />
+        <Button Grid.ColumnSpan="2" Grid.Row="2" Text="Save New Teacher" Clicked="Button_Clicked" />
     </Grid>
 </ContentPage>

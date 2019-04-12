@@ -26,7 +26,12 @@ namespace App18
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var student = e.Item as Student;
+
+            if (await DisplayAlert($"{student.FirstName} {student.LastName}", $"Ocena: {student.Grade}. Ur. {student.Birthday.ToLongDateString()}. Czy przejść do edycji?", "TAK", "NIE"))
+            {
+                await Navigation.PushAsync(new StudentEditPage(_teacher, student));
+            }
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -34,17 +39,7 @@ namespace App18
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            Random r = new Random();
-            var student = new Student()
-            {
-                FirstName = "inż. Testowy",
-                LastName = r.Next(1, 1000).ToString(),
-                Grade = 2,
-                TeacherID = _teacher.ID
-            };
-
-            await App.LocalDB.SaveItem(student);
-            await RefreshData();
+            await Navigation.PushAsync(new StudentEditPage(_teacher));
         }
 
         private async Task RefreshData()

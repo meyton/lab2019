@@ -31,11 +31,16 @@ namespace App18
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            Random r = new Random();
+            if (string.IsNullOrEmpty(entryFirstName.Text)
+                || string.IsNullOrEmpty(entryLastName.Text))
+            {
+                return;
+            }
+            
             var teacher = new Teacher()
             {
-                FirstName = "dr Tester",
-                LastName = r.Next(1, 1000).ToString()
+                FirstName = entryFirstName.Text,
+                LastName = entryLastName.Text
             };
 
             await App.LocalDB.SaveItem(teacher);
