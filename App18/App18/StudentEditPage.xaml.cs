@@ -20,7 +20,7 @@ namespace App18
 		{
             _student = student;
             _teacher = teacher;
-			InitializeComponent ();
+			InitializeComponent();
             lblTeacher.Text = $"Teacher: {_teacher.FirstName} {_teacher.LastName}";
             if (_student != null)
             {
@@ -28,10 +28,20 @@ namespace App18
                 entryLastName.Text = _student.LastName;
                 entryGrade.Text = _student.Grade.ToString();
                 dpBirthday.Date = _student.Birthday;
+                btnDelete.IsVisible = true;
             }
 		}
 
         private async void Button_Clicked(object sender, EventArgs e)
+        {
+            overlayBusy.IsVisible = true;
+            stackBusy.IsVisible = true;
+            await SaveStudent();
+            overlayBusy.IsVisible = false;
+            stackBusy.IsVisible = false;
+        }
+
+        private async Task SaveStudent()
         {
             var student = new Student()
             {
@@ -50,6 +60,25 @@ namespace App18
             await App.LocalDB.SaveItem(student);
             await DisplayAlert("Sukces", "Udało się zapisać zmiany", "OK");
             await Navigation.PopAsync();
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            overlayBusy.IsVisible = true;
+            stackBusy.IsVisible = true;
+            await DeleteStudent();
+            overlayBusy.IsVisible = false;
+            stackBusy.IsVisible = false;
+        }
+
+        private async Task DeleteStudent()
+        {
+            if (_student != null)
+            {
+                await App.LocalDB.DeleteItem(_student);
+                await DisplayAlert("Sukces", "Udało się usunąć studenta", "OK");
+                await Navigation.PopAsync();
+            }
         }
     }
 }

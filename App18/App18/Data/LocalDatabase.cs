@@ -35,6 +35,7 @@ namespace App18.Data
 
         public async Task<int> SaveItem<T>(T item) where T : class, ISqliteModel, new()
         {
+            await Task.Delay(5000);
             var result = await db.UpdateAsync(item);
 
             if (result == 0)
@@ -48,6 +49,11 @@ namespace App18.Data
         public async Task<int> DeleteItem<T>(T item) where T : class, ISqliteModel, new()
         {
             return await db.DeleteAsync(item);
+        }
+
+        public async Task<int> DeleteAll<T>(List<T> items) where T : class, ISqliteModel, new()
+        {
+            return await db.DeleteAsync(items);
         }
     }
 }

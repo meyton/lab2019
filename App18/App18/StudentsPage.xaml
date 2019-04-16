@@ -6,34 +6,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-      <ListView Grid.Row="0" x:Name="MyListView" 
+        <ListView Grid.Row="0" x:Name="MyListView" 
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding FirstName}" Detail="{Binding LastName}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
+
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding FirstName}" Detail="{Binding LastName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <Button Grid.Row="1" Text="Add new student" Clicked="Button_Clicked" />
+        <Button x:Name="btnSelect" Grid.Row="2" Text="Remove students" Clicked="Select_Clicked" />
     </Grid>
 </ContentPage>
