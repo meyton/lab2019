@@ -6,7 +6,7 @@
         <AbsoluteLayout>
             <StackLayout Spacing="20" Padding="10" AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0" AbsoluteLayout.LayoutFlags="All" >
                 <Label Margin="20" x:Name="lblTeacher" Text="Teacher: Imię Nazwisko" />
-                <Entry x:Name="entryFirstName" Placeholder="First Name" />
+                <Entry  x:Name="entryFirstName" Placeholder="First Name" />
                 <Entry x:Name="entryLastName" Placeholder="Last Name" />
                 <Entry x:Name="entryGrade" Placeholder="2" Keyboard="Numeric" />
                 <DatePicker x:Name="dpBirthday" />

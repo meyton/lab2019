@@ -17,10 +17,12 @@ namespace App18
         private Teacher _teacher;
         private bool _isSelectable;
         private List<Student> _studentsSelected;
+        private List<Student> _students;
 
         public StudentsPage(Teacher teacher)
         {
             _studentsSelected = new List<Student>();
+            _students = new List<Student>();
             _isSelectable = false;
             _teacher = teacher;
             InitializeComponent();
@@ -48,12 +50,18 @@ namespace App18
                 if (_studentsSelected.Contains(student))
                 {
                     _studentsSelected.Remove(student);
+                    var firstName = student.FirstName.Remove(0, 2);
+                    _students.Where(s => s.ID == student.ID).First().FirstName = firstName;
                 }
                 else
                 {
-                    _studentsSelected.Add(student);
+                    var studentSelected = _students.Where(s => s.ID == student.ID).First();
+                    studentSelected.FirstName = "X " + student.FirstName;
+                    _studentsSelected.Add(studentSelected);
                 }
 
+                MyListView.ItemsSource = null;
+                MyListView.ItemsSource = _students;
                 btnSelect.Text = $"Remove students ({_studentsSelected.Count})";
             }
         }
@@ -65,9 +73,9 @@ namespace App18
 
         private async Task RefreshData()
         {
-            var students = await App.LocalDB.GetAll<Student>();
-            students.RemoveAll(s => s.TeacherID != _teacher.ID);
-            MyListView.ItemsSource = students;
+            _students = await App.LocalDB.GetAll<Student>();
+            _students.RemoveAll(s => s.TeacherID != _teacher.ID);
+            MyListView.ItemsSource = _students;
         }
 
         protected override async void OnAppearing()

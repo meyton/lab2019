@@ -10,7 +10,7 @@
         </Grid.RowDefinitions>
         <ListView Grid.Row="0" x:Name="MyListView" 
             ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+                   >
 
             <!--Built in Cells-->
             <ListView.ItemTemplate>
