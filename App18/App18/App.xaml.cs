@@ -30,7 +30,7 @@ namespace App18
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new TeachersPage());
+            MainPage = new NavigationPage(new View.TestPage());
         }
     }
 }
